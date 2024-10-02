@@ -15,7 +15,7 @@ const Page = () => {
     // Fetch questions from the backend
     const fetchQuestions = async () => {
         try {
-            const response = await axios.get('http://localhost:5000/api/questions');
+            const response = await axios.get('https://nextjs-quiz-app.onrender.com/api/questions');
             if (response) {
                 setQuestions(response.data);
             }
@@ -27,7 +27,7 @@ const Page = () => {
     // Delete a question
     const handleDelete = async (id) => {
         try {
-            const response = await axios.delete(`http://localhost:5000/api/questions/${id}`);
+            const response = await axios.delete(`https://nextjs-quiz-app.onrender.com/api/questions/${id}`);
             if (response.status === 200) {
                 alert(response.data.message);
                 fetchQuestions();
@@ -63,7 +63,7 @@ const Page = () => {
     // Submit updated question
     const handleUpdate = async (id) => {
         try {
-            const response = await axios.patch(`http://localhost:5000/api/questions/${id}`, editData);
+            const response = await axios.patch(`https://nextjs-quiz-app.onrender.com/api/questions/${id}`, editData);
             if (response.status === 201) {
                 alert(response.data.message);
                 fetchQuestions();

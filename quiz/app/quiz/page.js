@@ -39,7 +39,7 @@ const Quiz = () => {
     useEffect(() => {
         const fetchQuestions = async () => {
             if (selectedCategory) {
-                const response = await axios.get(`http://localhost:5000/api/questions/?category=${selectedCategory}`); // Fetch from backend API
+                const response = await axios.get(`https://nextjs-quiz-app.onrender.com/api/questions/?category=${selectedCategory}`); // Fetch from backend API
 
                 if (response.status === 200) {
                     setQuestions(response.data);

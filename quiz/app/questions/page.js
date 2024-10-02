@@ -25,7 +25,7 @@ const Question = () => {
             category
         };
 
-        const response = await axios.post('http://localhost:5000/api/questions', questionData);
+        const response = await axios.post('https://nextjs-quiz-app.onrender.com/api/questions', questionData);
 
         if (response.status === 201) {
             alert('Question added successfully!');
