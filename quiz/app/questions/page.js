@@ -10,7 +10,8 @@ const Question = () => {
     const [question, setQuestion] = useState('');
     const [options, setOptions] = useState(['', '', '', '']);
     const [correctAnswer, setCorrectAnswer] = useState('');
-    const [category, setCategory] = useState('');
+    const [category, setCategory] = useState('ReactJS'); // Default category
+
 
     // Handle form submission
     const handleSubmit = async (e) => {
@@ -24,7 +25,6 @@ const Question = () => {
             category
         };
 
-        // Call API to save the question to the database
         const response = await axios.post('http://localhost:5000/api/questions', questionData);
 
         if (response.status === 201) {
@@ -33,10 +33,12 @@ const Question = () => {
             setQuestion('');
             setOptions(['', '', '', '']);
             setCorrectAnswer('');
+            setCategory('ReactJS');
         } else {
             alert('Failed to add question');
         }
     };
+
 
     // Handle option changes
     const handleOptionChange = (index, value) => {

@@ -15,11 +15,15 @@ router.post('/api/questions', async (req, res) => {
             category
         });
 
-        await newQuestion.save();
-        res.status(201).json({ success: true, message: 'Question added successfully!' });
+        const saved = await newQuestion.save();
+        if (saved) {
+            res.status(201).json({ success: true, message: 'Question added successfully!' });
+        } else {
+            res.status(404).json({ success: false, error: "Failed to add question" })
+        }
     } catch (error) {
-        console.error(error);
-        res.status(500).json({ success: false, message: 'Failed to add question' });
+        console.error("Error Details:", error);
+        res.status(500).json({ success: false, message: 'Failed to add question', error: error.message });
     }
 });
 
